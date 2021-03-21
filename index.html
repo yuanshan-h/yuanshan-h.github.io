@@ -165,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E9%87%8D%E5%BA%86%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E5%9B%BE/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/yuanshan-h/yuanshan-h.github.io.git/images/avatar.gif">
@@ -179,7 +179,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E9%87%8D%E5%BA%86%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E5%9B%BE/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">Untitled</a>
         </h2>
 
         <div class="post-meta">
@@ -189,15 +189,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-03-21 12:57:01" itemprop="dateCreated datePublished" datetime="2021-03-21T12:57:01+08:00">2021-03-21</time>
+              <time title="Created: 2021-03-21 13:49:32" itemprop="dateCreated datePublished" datetime="2021-03-21T13:49:32+08:00">2021-03-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-20 12:22:21" itemprop="dateModified" datetime="2021-03-20T12:22:21+08:00">2021-03-20</time>
-              </span>
 
           
 
@@ -210,7 +203,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>import requests<br>import re<br>import os<br>#创建一个文件夹用于储存图片<br>if not os.path.exists(‘./旅游景点图’):<br>    os.mkdir(‘./旅游景点图’)<br>url=’<a target="_blank" rel="noopener" href="https://you.ctrip.com/sight/chongqing158.html&#39;">https://you.ctrip.com/sight/chongqing158.html&#39;</a><br>headers = {‘User-Agent’:’Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0’}<br>#爬取整张网页的信息<br>back = requests.get(url=url, headers=headers)<br>message = back.text<br>#提取所需要的信息,并以列表的形式返回<br>need = ‘<div class="leftimg">.<em>?img src=”(.</em>?)”.*?</div>‘<br>message_need = re.findall(need,message,re.S)<br>for i in message_need:<br>    #爬取图片的二进制数据<br>    img_get = requests.get(url=i,headers=headers).content<br>    #生成图片的名字<br>    img_name=i.split(‘/‘)[-1]<br>    #设置图片的储存路径<br>    img_path = ‘./旅游景点图/‘+img_name<br>    with open(img_path,’wb’) as wr:<br>        wr.write(img_get)<br>        print(‘收集成功’)</p>
+          <h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>“””<br>Created on Fri Mar 12 22:55:04 2021</p>
+<p>@author: 22943<br>“””<br>#server<br>import socket<br>server = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)<br>host = socket.gethostname()<br>port = 12345<br>server.bind((host,port))<br>for i in range(0,10):<br>    mes,addr = server.recvfrom(1024)<br>    mes1 = mes.decode()<br>    backfeed=”连接成功”<br>    print(mes1)<br>    if (i%2==0):    #   服务器进行回应<br>        server.sendto(backfeed.encode(),addr)<br>    else:         #   服务器不回应<br>        continue<br>server.close()</p>
+<p>‘’’</p>
+<p>#client<br>import socket<br>import time</p>
+<p>client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)  # 创建套接字<br>host = socket.gethostname()<br>client.settimeout(1) #  设置连接超时值<br>for i in range(0,10):<br>    mes = “请求连接”<br>    sendtime=time.time()<br>    client.sendto(mes.encode(),(host,12345))<br>    try:     # 收到服务器的回应<br>        mes2,addr= client.recvfrom(1024)<br>        backfeed = mes2<br>        RTT = time.time()-sendtime  #  计算往返时延<br>        print(backfeed.decode()+’     RTT = %.6f’%(RTT))<br>    except Exception:   #  当服务器没有回应时<br>        print(“连接超时”)</p>
+<p>client.close()
+   </p>
 
       
     </div>

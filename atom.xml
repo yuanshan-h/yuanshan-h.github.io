@@ -6,7 +6,7 @@
   <link href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/"/>
-  <updated>2021-03-20T04:22:21.928Z</updated>
+  <updated>2021-03-21T05:49:32.921Z</updated>
   <id>https://github.com/yuanshan-h/yuanshan-h.github.io.git/</id>
   
   <author>
@@ -18,17 +18,17 @@
   
   <entry>
     <title></title>
-    <link href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E9%87%8D%E5%BA%86%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E5%9B%BE/"/>
-    <id>https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E9%87%8D%E5%BA%86%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E5%9B%BE/</id>
-    <published>2021-03-21T04:57:01.573Z</published>
-    <updated>2021-03-20T04:22:21.928Z</updated>
+    <link href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    <id>https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</id>
+    <published>2021-03-21T05:49:32.921Z</published>
+    <updated>2021-03-21T05:49:32.921Z</updated>
     
-    <content type="html"><![CDATA[<p>import requests<br>import re<br>import os<br>#创建一个文件夹用于储存图片<br>if not os.path.exists(‘./旅游景点图’):<br>    os.mkdir(‘./旅游景点图’)<br>url=’<a href="https://you.ctrip.com/sight/chongqing158.html&#39;">https://you.ctrip.com/sight/chongqing158.html&#39;</a><br>headers = {‘User-Agent’:’Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0’}<br>#爬取整张网页的信息<br>back = requests.get(url=url, headers=headers)<br>message = back.text<br>#提取所需要的信息,并以列表的形式返回<br>need = ‘<div class="leftimg">.<em>?img src=”(.</em>?)”.*?</div>‘<br>message_need = re.findall(need,message,re.S)<br>for i in message_need:<br>    #爬取图片的二进制数据<br>    img_get = requests.get(url=i,headers=headers).content<br>    #生成图片的名字<br>    img_name=i.split(‘/‘)[-1]<br>    #设置图片的储存路径<br>    img_path = ‘./旅游景点图/‘+img_name<br>    with open(img_path,’wb’) as wr:<br>        wr.write(img_get)<br>        print(‘收集成功’)</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>“””<br>Created on Fri Mar 12 22:55:04 2021</p><p>@author: 22943<br>“””<br>#server<br>import socket<br>server = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)<br>host = socket.gethostname()<br>port = 12345<br>server.bind((host,port))<br>for i in range(0,10):<br>    mes,addr = server.recvfrom(1024)<br>    mes1 = mes.decode()<br>    backfeed=”连接成功”<br>    print(mes1)<br>    if (i%2==0):    #   服务器进行回应<br>        server.sendto(backfeed.encode(),addr)<br>    else:         #   服务器不回应<br>        continue<br>server.close()</p><p>‘’’</p><p>#client<br>import socket<br>import time</p><p>client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)  # 创建套接字<br>host = socket.gethostname()<br>client.settimeout(1) #  设置连接超时值<br>for i in range(0,10):<br>    mes = “请求连接”<br>    sendtime=time.time()<br>    client.sendto(mes.encode(),(host,12345))<br>    try:     # 收到服务器的回应<br>        mes2,addr= client.recvfrom(1024)<br>        backfeed = mes2<br>        RTT = time.time()-sendtime  #  计算往返时延<br>        print(backfeed.decode()+’     RTT = %.6f’%(RTT))<br>    except Exception:   #  当服务器没有回应时<br>        print(“连接超时”)</p><p>client.close()   </p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;import requests&lt;br&gt;import re&lt;br&gt;import os&lt;br&gt;#创建一个文件夹用于储存图片&lt;br&gt;if not os.path.exists(‘./旅游景点图’):&lt;br&gt;    os.mkdir(‘./旅游景点图’)&lt;br&gt;url=’&lt;a hr</summary>
+    <summary type="html">&lt;h1 id=&quot;coding-utf-8&quot;&gt;&lt;a href=&quot;#coding-utf-8&quot; class=&quot;headerlink&quot; title=&quot;-- coding: utf-8 --&quot;&gt;&lt;/a&gt;-&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;/h1&gt;&lt;p&gt;“””&lt;br&gt;</summary>
       
     
     
