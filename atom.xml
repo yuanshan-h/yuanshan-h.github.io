@@ -6,7 +6,7 @@
   <link href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/"/>
-  <updated>2021-03-05T05:21:40.786Z</updated>
+  <updated>2021-03-20T04:22:21.928Z</updated>
   <id>https://github.com/yuanshan-h/yuanshan-h.github.io.git/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E9%87%8D%E5%BA%86%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E5%9B%BE/"/>
+    <id>https://github.com/yuanshan-h/yuanshan-h.github.io.git/2021/03/21/%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E9%87%8D%E5%BA%86%E6%97%85%E6%B8%B8%E6%99%AF%E7%82%B9%E5%9B%BE/</id>
+    <published>2021-03-21T04:57:01.573Z</published>
+    <updated>2021-03-20T04:22:21.928Z</updated>
+    
+    <content type="html"><![CDATA[<p>import requests<br>import re<br>import os<br>#创建一个文件夹用于储存图片<br>if not os.path.exists(‘./旅游景点图’):<br>    os.mkdir(‘./旅游景点图’)<br>url=’<a href="https://you.ctrip.com/sight/chongqing158.html&#39;">https://you.ctrip.com/sight/chongqing158.html&#39;</a><br>headers = {‘User-Agent’:’Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0’}<br>#爬取整张网页的信息<br>back = requests.get(url=url, headers=headers)<br>message = back.text<br>#提取所需要的信息,并以列表的形式返回<br>need = ‘<div class="leftimg">.<em>?img src=”(.</em>?)”.*?</div>‘<br>message_need = re.findall(need,message,re.S)<br>for i in message_need:<br>    #爬取图片的二进制数据<br>    img_get = requests.get(url=i,headers=headers).content<br>    #生成图片的名字<br>    img_name=i.split(‘/‘)[-1]<br>    #设置图片的储存路径<br>    img_path = ‘./旅游景点图/‘+img_name<br>    with open(img_path,’wb’) as wr:<br>        wr.write(img_get)<br>        print(‘收集成功’)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;import requests&lt;br&gt;import re&lt;br&gt;import os&lt;br&gt;#创建一个文件夹用于储存图片&lt;br&gt;if not os.path.exists(‘./旅游景点图’):&lt;br&gt;    os.mkdir(‘./旅游景点图’)&lt;br&gt;url=’&lt;a hr</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
